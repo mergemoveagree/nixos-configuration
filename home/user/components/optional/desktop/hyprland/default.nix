@@ -155,6 +155,7 @@ in
       "$mod, D, exec, vesktop"
       "$mod, S, togglespecialworkspace, magic"
       "$mod SHIFT, S, movetoworkspace, special:magic"
+      "$mod, L, exec, pidof hyprlock || hyprlock"
     ]
     ++ (
       builtins.concatLists (builtins.genList (
