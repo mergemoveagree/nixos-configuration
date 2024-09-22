@@ -5,7 +5,7 @@
   coreutils = "${pkgs.coreutils}/bin";
   # Helper script to rebuild as root without git complications
   nixos-rbswitch = pkgs.writeShellScriptBin "nixos-rbswitch" ''
-    set -eux
+    set -eu
     if [ $(${coreutils}/id -u) -ne 0 ]; then
       echo This script needs to be run as root.
       exit
