@@ -40,7 +40,7 @@ in {
       device = "intel_backlight";
       reverse-scrolling = 1;
       format = "{percent}% {icon}";
-      format-icons = [ "󱩎" "󱩑" "󱩓" "󰛨" ];
+      format-icons = [ "󱩎" "󱩏" "󱩐" "󱩑" "󱩒" "󱩓" "󱩔" "󱩕" "󱩖" "󰛨" ];
       min-length = 7;
     };
     battery = {
