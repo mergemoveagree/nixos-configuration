@@ -1,0 +1,23 @@
+keys:
+  - &users:
+    - &user 0581367C097C635BF5839E57282872FA4AF162DE
+  - &homes:
+    - &user_home age1fqgqugs3xk430tleutumc6ppk3l26expcszhhn4l0d3p7erf2ses5neg2j
+  - &hosts:
+    - &thinkpadx1 age1akhfmudtwrwcm5ss5c8lrlf5znrt38dwy8ecfl9ne33s06nrmeasa5xjgy
+    - &asrock age1jgfvjm4l78e8gg0e3k29xy74dtutegayy0wzeeqk2jvtt6mahsqq6p7uy7
+creation_rules:
+  - path_regex: hosts/components(/users)?/secrets.yml$
+    key_groups:
+      - age:
+          - *thinkpadx1
+          - *asrock
+          - *user_home
+        pgp:
+          - *user
+  - path_regex: home/user/components/secrets.yml$
+    key_groups:
+      - age:
+          - *user_home
+        pgp:
+          - *user
