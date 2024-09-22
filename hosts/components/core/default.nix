@@ -7,6 +7,7 @@
     ./chrony.nix
     ./pipewire.nix
     ./networking.nix
+    ./nixos-rbswitch.nix
 
     ./thunar.nix
   ];
