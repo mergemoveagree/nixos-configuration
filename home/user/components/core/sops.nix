@@ -9,11 +9,15 @@ in {
     secrets = {
       ssh_github_private_key = {
         path = "${home_dir}/.ssh/id_github_rw";
-	sopsFile = ../secrets.yml;
+        sopsFile = ../secrets.yml;
       };
       ssh_signing_private_key = {
         path = "${home_dir}/.ssh/id_github_sign";
-	sopsFile = ../secrets.yml;
+        sopsFile = ../secrets.yml;
+      };
+      ssh_hf_private_key = {
+        path = "${home_dir}/.ssh/id_hf_rw";
+        sopsFile = ../secrets.yml;
       };
     };
   };
