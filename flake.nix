@@ -40,7 +40,7 @@
             inputs.disko.nixosModules.disko
             ./configuration.nix
             ./hosts/thinkpadx1
-	    ./hosts/components/users/user
+      	    ./hosts/components/users/user
           ];
         };
       }
@@ -51,7 +51,7 @@
           inputs.disko.nixosModules.disko
           ./configuration.nix
           ./hosts/${name}
-	  ./hosts/components/users/user
+	        ./hosts/components/users/user
         ];
       }))
     ];
