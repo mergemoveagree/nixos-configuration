@@ -7,10 +7,20 @@
     };
   };
 
-  outputs = {nixpkgs, ...}: let
+  outputs = {self, nixpkgs, ...}: let
     genSystems = nixpkgs.lib.genAttrs [
       "x86_64-linux"
       "x86_64-darwin"
     ];
-  in {packages = genSystems (system: {default = nixpkgs.legacyPackages.${system}.callPackage ./package.nix {};});};
+    pkgsFor = system: let
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ self.overlays.default ];
+      };
+      overlay = self.overlays.default pkgs pkgs;
+    in overlay;
+  in {
+    overlays.default = import ./overlay.nix;
+    packages = genSystems pkgsFor;
+  };
 }

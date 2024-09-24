@@ -1,3 +1,7 @@
+{ pname
+, buildFeatures ? []
+}: 
+
 { lib
 , rustPlatform
 , fetchFromGitHub
@@ -8,7 +12,10 @@
 , stdenv
 , darwin
 }: rustPlatform.buildRustPackage rec {
-  pname = "lsp-ai";
+  inherit
+    pname
+    buildFeatures
+  ;
   version = "0.7.0";
 
   src = fetchFromGitHub {
@@ -26,10 +33,8 @@
     };
   };
 
-  # Unable to run tests without a local model
+  # Unable to run tests without a local model or API keys
   doCheck = false;
-
-  buildFeatures = [ "llama_cpp" ];
 
   nativeBuildInputs = [
     pkg-config
@@ -55,7 +60,7 @@
     description = "LSP-AI is an open-source language server that serves as a backend for AI-powered functionality, designed to assist and empower software engineers, not replace them";
     homepage = "https://github.com/SilasMarvin/lsp-ai";
     license = lib.licenses.mit;
-    maintainers = [];
+    maintainers = [];  # TODO: Add maintainers
     mainProgram = "lsp-ai";
   };
 }
