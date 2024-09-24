@@ -56,7 +56,7 @@
     };
   };
   extraConfigLua = let
-    lsp-ai-llama-cpp-only = "${inputs.lsp-ai.packages.${pkgs.system}.lsp-ai-llama-cpp-only}/bin/lsp-ai";
+    lsp-ai-llama-cpp = "${inputs.lsp-ai.packages.${pkgs.system}.lsp-ai-llama-cpp}/bin/lsp-ai";
   in ''
     local _border = "rounded"
 
@@ -82,7 +82,7 @@
 
     local lsp_ai_config = {
       cmd = {
-        '${lsp-ai-llama-cpp-only}',
+        '${lsp-ai-llama-cpp}',
         '--use-seperate-log-file',
       },
       cmd_env = {

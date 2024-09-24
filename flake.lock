@@ -243,7 +243,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-B1R5d9rFy9I4/wH03SW0gmeWzCZvmJ6Zz2boTS4iWak=",
+        "narHash": "sha256-dlXrI/tZ7LBuJeSZRjLlioAOaDMzBCKy1/ikkLPmEdI=",
         "path": "pkgs/lsp-ai",
         "type": "path"
       },
