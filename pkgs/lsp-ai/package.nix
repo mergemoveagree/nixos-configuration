@@ -29,6 +29,8 @@
   # Unable to run tests without a local model
   doCheck = false;
 
+  buildFeatures = [ "llama_cpp" ];
+
   nativeBuildInputs = [
     pkg-config
     rustPlatform.bindgenHook

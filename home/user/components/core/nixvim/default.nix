@@ -10,6 +10,7 @@
   nvim = nixvim'.makeNixvimWithModule {
     inherit pkgs;
     module = ./config;
+    extraSpecialArgs = {inherit inputs;};
   };
 in {
   imports = [

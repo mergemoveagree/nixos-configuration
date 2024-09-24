@@ -20,6 +20,10 @@
 
   inputs.hardware.url = "github:nixos/nixos-hardware";
 
+  # Local pkgs
+  inputs.lsp-ai.url = "path:pkgs/lsp-ai";
+  inputs.lsp-ai.inputs.nixpkgs.follows = "nixpkgs";
+
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
   let
     system = "x86_64-linux";
