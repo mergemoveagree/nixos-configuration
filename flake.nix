@@ -27,6 +27,7 @@
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
   let
     system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
     inherit (nixpkgs) lib;
     specialArgs = {
       inherit
@@ -59,5 +60,19 @@
         ];
       }))
     ];
+
+    devShells.${system}.default = pkgs.mkShell {
+      NIX_CONFIG = "extra-experimental-features = nix-command flakes";
+      nativeBuildInputs = with pkgs; [
+        git
+        git-crypt
+        sops
+        gnupg
+        age
+        ssh-to-age
+        pcsclite
+        ccid
+      ];
+    };
   };
 }
