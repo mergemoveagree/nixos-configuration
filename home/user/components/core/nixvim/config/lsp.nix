@@ -80,54 +80,41 @@
       border = _border
     }
 
-    local lsp_ai_config = {
-      cmd = {
-        '${lsp-ai-llama-cpp}',
-        '--use-seperate-log-file',
-      },
-      cmd_env = {
-        LSP_AI_LOG = "DEBUG",
-      },
-      root_dir = vim.loop.cwd(),
-      init_options = {
-        memory = {
-          file_store = {}
-        },
-        models = {
-          model1 = {
-            type = "llama_cpp",
-            file_path = "/home/user/Meta-Llama-3.1-8B-F16.gguf",
-            n_ctx = 2048,
-            n_gpu_layers = 999,
-          }
-        },
-        completion = {
-          model = "model1",
-          parameters = {
-            fim = {
-              start = "<|fim_prefix|>",
-              middle = "<|fim_suffix|>",
-              ["end"] = "<|fim_middle|>",
-            },
-            max_context = 2000,
-            max_new_tokens = 32,
-            messages = {
-              {
-                role="system",
-                content="You are a programming completion tool. Replace <CURSOR> with the correct code.",
+    require('lspconfig.configs').lsp_ai = {
+      default_config = {
+        cmd = { '${lsp-ai-llama-cpp}' },
+        filetypes = { 'html' },
+        root_dir = vim.loop.cwd,
+        init_options = {
+          memory = {
+            file_store = {}
+          },
+          models = {
+            model1 = {
+              type = "llama_cpp",
+              file_path = "/home/user/Meta-Llama-3.1-8B-F16.gguf",
+              n_ctx = 2048,
+              n_gpu_layers = 0,
+            }
+          },
+          completion = {
+            model = "model1",
+            parameters = {
+              fim = {
+                start = "<|fim_prefix|>",
+                middle = "<|fim_suffix|>",
+                ["end"] = "<|fim_middle|>",
               },
-              {
-                role = "user",
-                content = "{CODE}",
-              },
+              max_context = 2000,
+              max_new_tokens = 32,
             }
           }
-        }
+        },
       },
     }
 
-    vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-      callback = function() vim.lsp.start(lsp_ai_config) end,
+    require('lspconfig').lsp_ai.setup ({
+      capabilities = require('cmp_nvim_lsp').default_capabilities(),
     })
   '';
 }
