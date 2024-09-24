@@ -15,6 +15,7 @@
   ];
 
   colorschemes.nord.enable = true;
+  plugins.web-devicons.enable = true;  # For neotree and bufferline
 
   globals.mapleader = " ";
   clipboard.providers.wl-copy.enable = true;
