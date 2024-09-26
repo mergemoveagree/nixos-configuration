@@ -5,6 +5,7 @@
 {
   imports = [
     inputs.hardware.nixosModules.lenovo-thinkpad-x1-9th-gen
+    inputs.hardware.nixosModules.common-pc-laptop
     inputs.hardware.nixosModules.common-cpu-intel
     ./hardware-configuration.nix
 
