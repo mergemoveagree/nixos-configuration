@@ -13,6 +13,7 @@
 
   home.packages = with pkgs; [
     wl-clipboard-rs
+    tor-browser
   ];
 
   programs.fzf.enable = true;
