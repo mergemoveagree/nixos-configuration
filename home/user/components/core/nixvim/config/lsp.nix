@@ -80,41 +80,61 @@
       border = _border
     }
 
+    --[===[
+    local lsp_ai_json_config = [[
+    {
+      "memory": {
+        "file_store": {}
+      },
+      "models": {
+        "model1": {
+          "type": "llama_cpp",
+          "file_path": "/home/user/Meta-Llama-3.1-8B-Instruct-F16.gguf",
+          "n_ctx": 131072,
+          "n_gpu_layers": 0
+        }
+      },
+      "completion": {
+        "model": "model1",
+        "parameters": {
+          "max_context": 2000,
+          "max_new_tokens": 32,
+          "messages": [
+            {
+              "role": "system",
+              "content": "You are a chat completion system like GitHub Copilot. You will be given a context and a code snippet. You should generate a response that is a continuation of the context and code snippet."
+            },
+            {
+              "role": "user",
+              "content": "Context: {CONTEXT} - Code: {CODE}"
+            }
+          ]
+        }
+      }
+    }
+    ]]
+
+
     require('lspconfig.configs').lsp_ai = {
       default_config = {
-        cmd = { '${lsp-ai-llama-cpp}' },
+        cmd = {
+          '${lsp-ai-llama-cpp}',
+          '--use-seperate-log-file',
+        },
+        cmd_env = {
+          LSP_AI_LOG = "DEBUG",
+        },
         filetypes = { 'html' },
         root_dir = vim.loop.cwd,
-        init_options = {
-          memory = {
-            file_store = {}
-          },
-          models = {
-            model1 = {
-              type = "llama_cpp",
-              file_path = "/home/user/Meta-Llama-3.1-8B-F16.gguf",
-              n_ctx = 2048,
-              n_gpu_layers = 0,
-            }
-          },
-          completion = {
-            model = "model1",
-            parameters = {
-              fim = {
-                start = "<|fim_prefix|>",
-                middle = "<|fim_suffix|>",
-                ["end"] = "<|fim_middle|>",
-              },
-              max_context = 2000,
-              max_new_tokens = 32,
-            }
-          }
-        },
+        init_options = vim.fn.json_decode(lsp_ai_json_config),
       },
     }
 
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
     require('lspconfig').lsp_ai.setup ({
-      capabilities = require('cmp_nvim_lsp').default_capabilities(),
+      capabilities = capabilities,
     })
+    --]===]
   '';
 }
