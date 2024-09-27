@@ -1,12 +1,7 @@
 { config
 , pkgs
-, inputs
 , ...
 }: {
-  home-manager.sharedModules = [
-    inputs.sops-nix.homeManagerModules.sops
-  ];
-
   sops.secrets = {
     "users_passwords/user" = {
       neededForUsers = true;
