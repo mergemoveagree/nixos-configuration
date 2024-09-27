@@ -45,7 +45,15 @@
             inputs.disko.nixosModules.disko
             ./configuration.nix
             ./hosts/thinkpadx1
-      	    ./hosts/components/users/user
+          ];
+        };
+        teemo = nixpkgs.lib.nixosSystem {
+          system = "aarch64";
+          inherit specialArgs;
+          modules = [
+            inputs.disko.nixosModules.disko
+            ./configuration.nix
+            ./hosts/teemo
           ];
         };
       }
@@ -56,7 +64,6 @@
           inputs.disko.nixosModules.disko
           ./configuration.nix
           ./hosts/${name}
-	        ./hosts/components/users/user
         ];
       }))
     ];

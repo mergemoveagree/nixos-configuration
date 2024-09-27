@@ -23,6 +23,4 @@
     hashedPasswordFile = config.sops.secrets."users_passwords/user".path;
     shell = pkgs.zsh;
   };
-
-  home-manager.users.user = import ../../../../home/user/${config.networking.hostName}.nix;
 }
