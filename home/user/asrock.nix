@@ -24,4 +24,6 @@
     ];
     workspace = [ "10,border:false,rounding:false" ];
   };
+
+  services.easyeffects.preset = "Perfect EQ";
 }

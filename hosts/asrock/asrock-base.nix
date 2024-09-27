@@ -22,6 +22,8 @@
 
   networking.hostName = "asrock";
 
+  programs.dconf.enable = true;
+
   # Kernel module for TP-LINK USB WiFi Adapter
   boot.extraModulePackages = [ config.boot.kernelPackages.rtl8852au ];
   # Needed for USB WiFi adapter to work
