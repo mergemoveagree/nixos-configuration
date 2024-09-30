@@ -1,6 +1,6 @@
 {
-  disko.devices.disk = {
-    main = {
+  disko.devices = {
+    disk.main = {
       type = "disk";
       device = "/dev/sda";
       content = {
@@ -28,35 +28,60 @@
               passwordFile = "/tmp/secret.key";
               settings.allowDiscards = true;
               content = {
-                type = "btrfs";
-                extraArgs = [ "-f" ];
-                subvolumes = {
-                  "/@" = {
-                    mountpoint = "/";
-                    mountOptions = [ "compress-force=zstd" "space_cache=v2" "relatime" ];
-                  };
-                  "/@var" = {
-                    mountpoint = "/var";
-                    mountOptions = [ "compress-force=zstd" "space_cache=v2" "relatime" ];
-                  };
-                  "/@vartmp" = {
-                    mountpoint = "/var/tmp";
-                    mountOptions = [ "compress-force=zstd" "space_cache=v2" "relatime" ];
-                  };
-                  "/@home" = {
-                    mountpoint = "/home";
-                    mountOptions = [ "compress-force=zstd" "space_cache=v2" "relatime" ];
-                  };
-                  "/@nix" = {
-                    mountpoint = "/nix";
-                    mountOptions = [ "compress-force=zstd" "space_cache=v2" "noatime" ];
-                  };
-                  "/@swap" = {
-                    mountpoint = "/swap";
-                    swap.swapfile.size = "4G";
-                  };
-                };
+                type = "lvm_pv";
+                vg = "pool";
               };
+            };
+          };
+        };
+      };
+    };
+    lvm_vg = {
+      pool = {
+        type = "lvm_vg";
+        lvs = {
+          root = {
+            size = "32G";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/";
+              mountOptions = [
+                "defaults"
+              ];
+            };
+          };
+          var = {
+            size = "64G";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/var";
+              mountOptions = [
+                "defaults"
+              ];
+            };
+          };
+          nix = {
+            size = "200G";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/nix";
+              mountOptions = [
+                "noatime"
+              ];
+            };
+          };
+          home = {
+            size = "80%FREE";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/home";
+              mountOptions = [
+                "defaults"
+              ];
             };
           };
         };
