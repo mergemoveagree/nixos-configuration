@@ -56,9 +56,13 @@
     };
   };
   extraConfigLua = let
-    lsp-ai-llama-cpp = "${inputs.lsp-ai.packages.${pkgs.system}.lsp-ai-llama-cpp}/bin/lsp-ai";
+    #lsp-ai-llama-cpp = "${inputs.lsp-ai.packages.${pkgs.system}.lsp-ai-llama-cpp}/bin/lsp-ai";
+    elixir-ls = "${pkgs.elixir-ls}/bin/elixir-ls";
+    tailwindcss-ls = "${pkgs.tailwindcss-language-server}/bin/tailwindcss-language-server";
   in ''
     local _border = "rounded"
+    local lspconfig = require("lspconfig")
+    local lspconfig_configs = require("lspconfig.configs")
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
       vim.lsp.handlers.hover, {
@@ -80,7 +84,67 @@
       border = _border
     }
 
-    --[===[
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+    lspconfig_configs.elixir_ls = {
+      default_config = {
+        cmd = { '${elixir-ls}' },
+        filetypes = { 'elixir', 'heex' },
+        root_dir = vim.loop.cwd,
+      }
+    }
+
+    lspconfig_configs.tailwindcss = {
+      default_config = {
+        cmd = { '${tailwindcss-ls}', '--stdio' },
+        filetypes = { 'css' },
+        root_dir = vim.loop.cwd,
+        init_options = {
+          userLanguages = {
+            eelixir = "html-eex",
+          }
+        },
+        on_new_config = function(new_config)
+          if not new_config.settings then
+            new_config.settings = {}
+          end
+          if not new_config.settings.editor then
+            new_config.settings.editor = {}
+          end
+          if not new_config.settings.editor.tabSize then
+            -- set tab size for hover
+            new_config.settings.editor.tabSize = vim.lsp.util.get_effective_tabstop()
+          end
+        end,
+        settings = {
+          tailwindCSS = {
+            lint = {
+              cssConflict = "warning",
+              invalidApply = "error",
+              invalidConfigPath = "error",
+              invalidScreen = "error",
+              invalidTailwindDirective = "error",
+              invalidVariant = "error",
+              recommendedVariantOrder = "warning",
+            },
+            validate = true,
+          }
+        }
+      }
+    }
+
+    lspconfig.tailwindcss.setup({
+      capabilities = capabilities,
+    })
+
+    lspconfig.elixir_ls.setup({
+      capabilities = capabilities,
+    })
+    '';
+
+    /*
+    TODO: Fix LSP-AI config
+
     local lsp_ai_json_config = [[
     {
       "memory": {
@@ -115,7 +179,7 @@
     ]]
 
 
-    require('lspconfig.configs').lsp_ai = {
+    lspconfig_configs.lsp_ai = {
       default_config = {
         cmd = {
           '${lsp-ai-llama-cpp}',
@@ -130,11 +194,8 @@
       },
     }
 
-    local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
     require('lspconfig').lsp_ai.setup ({
       capabilities = capabilities,
     })
-    --]===]
-  '';
+  */
 }

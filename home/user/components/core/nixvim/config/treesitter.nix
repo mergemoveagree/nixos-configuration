@@ -6,6 +6,11 @@
     settings = {
       indent.enable = true;
       highlight.enable = true;
+      ensure_installed = [
+        "elixir"
+        "eex"
+        "heex"
+      ];
     };
     folding = false;
     nixvimInjections = true;
