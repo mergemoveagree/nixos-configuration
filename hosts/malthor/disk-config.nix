@@ -73,6 +73,13 @@
               ];
             };
           };
+          swap = {
+            size = "8G";
+            content = {
+              type = "swap";
+              discardPolicy = "both";
+            };
+          };
           home = {
             size = "80%FREE";
             content = {
