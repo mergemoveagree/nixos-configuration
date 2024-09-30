@@ -1,10 +1,12 @@
 {
   imports = [
-    ./components/core
+    ../components/core
+    ../components/optional/desktop
+    ../components/optional/gaming
 
-    ./components/optional/desktop
-    ./components/optional/gaming
+    ./components/core
     ./components/optional/freetube.nix
+    ./components/optional/thunderbird.nix
   ];
 
   wayland.windowManager.hyprland.settings.monitor = [

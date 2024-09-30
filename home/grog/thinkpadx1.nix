@@ -21,12 +21,10 @@
   '';
 in {
   imports = [
-    ../components/core
-    ../components/optional/desktop
-
     ./components/core
+
+    ./components/optional/desktop
     ./components/optional/freetube.nix
-    ./components/optional/thunderbird.nix
   ];
 
   services.easyeffects.preset = "Loudness+Autogain";

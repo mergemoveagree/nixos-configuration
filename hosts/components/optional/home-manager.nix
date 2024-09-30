@@ -1,5 +1,4 @@
 { inputs
-, config
 , ...
 }: {
   imports = [
@@ -17,6 +16,4 @@
   };
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-
-  home-manager.users.user = import ../../../home/user/${config.networking.hostName}.nix;
 }

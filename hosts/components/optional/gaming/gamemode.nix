@@ -7,7 +7,5 @@
       amd_performance_level = "auto";
     };
   };
-  users.users.user.extraGroups = [
-    "gamemode"
-  ];
 }
+

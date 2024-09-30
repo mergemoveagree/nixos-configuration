@@ -5,7 +5,7 @@
 }:
 let
   inherit (osConfig.networking) hostName;
-  nordzy-cursors-hyprcursor-theme = pkgs.callPackage ../../../../../../pkgs/nordzy-cursors-hyprcursor-theme {};
+  nordzy-cursors-hyprcursor-theme = pkgs.callPackage ../../../../../pkgs/nordzy-cursors-hyprcursor-theme {};
 in
 {
   imports = [

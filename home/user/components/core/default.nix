@@ -9,10 +9,10 @@
     ./sops.nix
     ./zsh.nix
     ./nixvim
+    ./mail.nix
   ];
 
   home.packages = with pkgs; [
-    wl-clipboard-rs
     tor-browser
   ];
 
@@ -21,7 +21,4 @@
 
   programs.thefuck.enable = true;
   programs.thefuck.enableBashIntegration = lib.mkDefault true;
-  
-  programs.home-manager.enable = true;
-  home.stateVersion = "24.05";
 }

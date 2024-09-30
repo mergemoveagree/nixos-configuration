@@ -39,12 +39,25 @@
     nixosConfigurations = lib.mergeAttrsList [
       {
         thinkpadx1 = nixpkgs.lib.nixosSystem {
-          inherit system;
-          inherit specialArgs;
+          inherit
+            system
+            specialArgs
+          ;
           modules = [
             inputs.disko.nixosModules.disko
             ./configuration.nix
             ./hosts/thinkpadx1
+          ];
+        };
+        malthor = nixpkgs.lib.nixosSystem {
+          inherit
+            system
+            specialArgs
+          ;
+          modules = [
+              inputs.disko.nixosModules.disko
+              ./configuration.nix
+              ./hosts/malthor
           ];
         };
         teemo = nixpkgs.lib.nixosSystem {
@@ -58,8 +71,10 @@
         };
       }
       (lib.genAttrs [ "asrock" "asrock-install" ] (name: nixpkgs.lib.nixosSystem {
-        inherit system;
-        inherit specialArgs;
+        inherit
+          system
+          specialArgs
+        ;
         modules = [
           inputs.disko.nixosModules.disko
           ./configuration.nix

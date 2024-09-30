@@ -8,9 +8,12 @@
 
     ../components/core
 
+    /*
+    # TODO: Sort out home-manager configuration stuff
     ../components/users/user
     ../components/users/elmo
     ../components/users/muggles
+    */
   ];
 
   boot.loader.systemd-boot.enable = lib.mkForce false;

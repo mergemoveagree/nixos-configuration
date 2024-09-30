@@ -1,5 +1,4 @@
 { config
-, lib
 , pkgs
 , ... }: let
   home_dir = config.home.homeDirectory;
