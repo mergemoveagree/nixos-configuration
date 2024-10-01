@@ -5,7 +5,7 @@
 }: let
   coreutils = pkgs.coreutils;
   check_battery = pkgs.writeShellScript "check_battery" ''
-    bat=/sys/class/power_supply/BAT0
+    bat=/sys/class/power_supply/BAT1
     CRIT=''${1:-15}
     FILE=${config.xdg.configHome}/waybar_battery_notify stat=$(${coreutils}/bin/cat $bat/status)
     perc=$(${coreutils}/bin/cat $bat/capacity)
