@@ -1,4 +1,6 @@
-{
+{ pkgs
+, ...
+}: {
   imports = [
     ../components/core
     ../components/optional/desktop
@@ -7,6 +9,10 @@
     ./components/core
     ./components/optional/freetube.nix
     ./components/optional/thunderbird.nix
+  ];
+
+  home.packages = with pkgs; [
+    vesktop
   ];
 
   wayland.windowManager.hyprland.settings.monitor = [

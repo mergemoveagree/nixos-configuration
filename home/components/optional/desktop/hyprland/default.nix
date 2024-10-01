@@ -25,7 +25,6 @@ in
     kitty
     mako
     pavucontrol
-    vesktop
     xwaylandvideobridge
 
     nerdfonts

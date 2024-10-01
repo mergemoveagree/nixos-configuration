@@ -25,6 +25,10 @@ in {
     ../components/optional/desktop
   ];
 
+  home.packages = with pkgs; [
+    discord
+  ];
+
   services.easyeffects.preset = "Loudness+Autogain";
 
   wayland.windowManager.hyprland.settings.monitor = [

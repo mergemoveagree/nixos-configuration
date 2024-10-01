@@ -29,6 +29,10 @@ in {
     ./components/optional/thunderbird.nix
   ];
 
+  home.packages = with pkgs; [
+    vesktop
+  ];
+
   services.easyeffects.preset = "Loudness+Autogain";
 
   wayland.windowManager.hyprland.settings.monitor = [
