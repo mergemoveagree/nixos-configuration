@@ -41,6 +41,7 @@ in
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.systemd.enable = true;
   wayland.windowManager.hyprland.xwayland.enable = true;
+  # TODO: Move settings to different file
   wayland.windowManager.hyprland.settings = {
     monitor = pkgs.lib.mkDefault [ ",preferred,auto,1" ];
 
@@ -156,6 +157,11 @@ in
       "$mod, S, togglespecialworkspace, magic"
       "$mod SHIFT, S, movetoworkspace, special:magic"
       "$mod, L, exec, pidof hyprlock || hyprlock"
+      ", xf86audioraisevolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%"
+      ", xf86audiolowervolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%"
+      ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"
+      ", XF86MonBrightnessUp, exec, brightnessctl set +10%"
+      ", XF86MonBrightnessDown, exec, brightnessctl set 10%-"
     ]
     ++ (
       builtins.concatLists (builtins.genList (
