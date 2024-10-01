@@ -44,10 +44,10 @@ in {
 
   services.hyprpaper.settings = {
     preload = [
-      "${../components/optional/desktop/wallpapers/er2.png}"
+      "${../components/optional/desktop/wallpapers/orv.png}"
     ];
     wallpaper = [
-      "eDP-1,${../components/optional/desktop/wallpapers/er2.png}"
+      "eDP-1,${../components/optional/desktop/wallpapers/orv.png}"
     ];
   };
 
