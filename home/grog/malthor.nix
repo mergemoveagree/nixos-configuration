@@ -34,6 +34,15 @@ in {
   programs.waybar.settings.main.temperature.hwmon-path =
     "/sys/class/thermal/thermal_zone1/temp";
 
+  services.hyprpaper.settings = {
+    preload = [
+      ../components/optional/desktop/wallpapers/er2.png
+    ];
+    wallpaper = [
+      "eDP-1,${../components/optional/desktop/wallpapers/er2.png}"
+    ];
+  };
+
   programs.waybar.settings.main = {
     modules-right = lib.mkForce [ "idle_inhibitor" "pulseaudio" "memory" "temperature" "backlight" "battery" "tray" ];
     backlight = {

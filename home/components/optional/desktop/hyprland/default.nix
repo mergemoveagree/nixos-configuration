@@ -10,9 +10,9 @@ in
 {
   imports = [
     ./hypridle.nix
+    ./hyprpaper.nix
     ./rofi.nix
     ./hyprlock-${hostName}.nix
-    ./swww-${hostName}.nix
     ./waybar
   ];
 

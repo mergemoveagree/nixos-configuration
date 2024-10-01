@@ -12,9 +12,6 @@
   inputs.sops-nix.url = "github:Mic92/sops-nix";
   inputs.sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-  inputs.swww.url = "github:LGFae/swww";
-  inputs.swww.inputs.nixpkgs.follows = "nixpkgs";
-
   inputs.nixvim.url = "github:nix-community/nixvim";
   inputs.nixvim.inputs.nixpkgs.follows = "nixpkgs";
 

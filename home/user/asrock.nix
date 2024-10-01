@@ -18,6 +18,17 @@
   programs.waybar.settings.main.temperature.hwmon-path =
     "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input";
 
+  services.hyprpaper.settings = {
+    preload = [
+      ../components/optional/desktop/wallpapers/rags.jpg
+      ../components/optional/desktop/wallpapers/sl.jpg
+    ];
+    wallpaper = [
+      "DP-2,${../components/optional/desktop/wallpapers/rags.jpg}"
+      "HDMI-A-1,${../components/optional/desktop/wallpapers/sl.jpg}"
+    ];
+  };
+
   wayland.windowManager.hyprland.settings = {
     windowrulev2 = [
       "fullscreen,class:^(gamescope)$"

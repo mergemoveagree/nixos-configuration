@@ -38,6 +38,15 @@ in {
   programs.waybar.settings.main.temperature.hwmon-path =
     "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp4_input";
 
+  services.hyprpaper.settings = {
+    preload = [
+      ../components/optional/desktop/wallpapers/er2.png
+    ];
+    wallpaper = [
+      "eDP-1,${../components/optional/desktop/wallpapers/er2.png}"
+    ];
+  };
+
   programs.waybar.settings.main = {
     modules-right = lib.mkForce [ "idle_inhibitor" "pulseaudio" "memory" "temperature" "backlight" "battery" "tray" ];
     backlight = {
