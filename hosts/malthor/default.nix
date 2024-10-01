@@ -24,6 +24,7 @@
     install uvcvideo /bin/false
   '';
 
+  hardware.enableRedistributableFirmware = true;
   programs.dconf.enable = true;
 
   users.users.grog.extraGroups = [
@@ -31,6 +32,8 @@
   ];
 
   # NVIDIA Setup
+  # Have to redefine steam packages :(
+  # TODO: Do not duplicate packages in allowUnfreePredicate
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "steam"
     "steam-original"
