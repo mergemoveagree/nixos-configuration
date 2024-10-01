@@ -28,11 +28,11 @@ in {
   services.easyeffects.preset = "Loudness+Autogain";
 
   wayland.windowManager.hyprland.settings.monitor = [
-    "eDP-1,1920x1200@60,0x0,1"
+    "eDP-1,1920x1080@60,0x0,1"
   ];
 
   programs.waybar.settings.main.temperature.hwmon-path =
-    "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp4_input";
+    "/sys/class/thermal/thermal_zone1/temp";
 
   programs.waybar.settings.main = {
     modules-right = lib.mkForce [ "idle_inhibitor" "pulseaudio" "memory" "temperature" "backlight" "battery" "tray" ];
