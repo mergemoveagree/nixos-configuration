@@ -47,6 +47,15 @@ in {
     ];
   };
 
+  wayland.windowManager.hyprland.settings = {
+    windowrulev2 = [
+      "fullscreen,class:^(gamescope)$"
+      "monitor DP-2,class:^(gamescope)$"
+      "workspace 10,class:^(gamescope)$"
+    ];
+    workspace = [ "10,border:false,rounding:false" ];
+  };
+
   programs.waybar.settings.main = {
     modules-right = lib.mkForce [ "idle_inhibitor" "pulseaudio" "memory" "temperature" "backlight" "battery" "tray" ];
     backlight = {
