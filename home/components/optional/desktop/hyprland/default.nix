@@ -26,6 +26,7 @@ in
     mako
     pavucontrol
     xwaylandvideobridge
+    networkmanagerapplet
 
     nerdfonts
     font-awesome
@@ -49,12 +50,11 @@ in
     "$menu" = "rofi -show drun";
 
     exec-once = [
-      "mako"
-      "/usr/lib/polkit-kde-authentication-agent-1"
-      "waybar"
-      "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-      "systemctl --user import-environment"
-      "thunar --daemon"
+      "${pkgs.mako}/bin/mako"
+      "${pkgs.waybar}"
+      "${pkgs.systemd}/bin/systemctl --user import-environment"
+      "${pkgs.xfce.thunar}/bin/thunar --daemon"
+      "${pkgs.networkmanagerapplet}/bin/nm-applet"
     ];
 
     env = [
