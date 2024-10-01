@@ -38,6 +38,7 @@
     "steam"
     "steam-original"
     "steam-run"
+    "discord"
     "nvidia-x11"
     "nvidia-settings"
     "nvidia-persistenced"
