@@ -51,7 +51,7 @@ in
 
     exec-once = [
       "${pkgs.mako}/bin/mako"
-      "${pkgs.waybar}"
+      "${pkgs.waybar}/bin/waybar"
       "${pkgs.systemd}/bin/systemctl --user import-environment"
       "${pkgs.xfce.thunar}/bin/thunar --daemon"
       "${pkgs.networkmanagerapplet}/bin/nm-applet"
