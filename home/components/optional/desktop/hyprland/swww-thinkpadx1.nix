@@ -6,7 +6,7 @@
 let
   start_swww_script = pkgs.writeShellScript "start_swww.sh" ''
     swww-daemon
-    sleep 0.5
+    sleep 1
     swww img ${../wallpapers/orv.png} -o eDP-1
   '';
 in
