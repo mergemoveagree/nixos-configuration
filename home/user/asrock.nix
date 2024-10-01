@@ -20,8 +20,8 @@
 
   services.hyprpaper.settings = {
     preload = [
-      ../components/optional/desktop/wallpapers/rags.jpg
-      ../components/optional/desktop/wallpapers/sl.jpg
+      "${../components/optional/desktop/wallpapers/rags.jpg}"
+      "${../components/optional/desktop/wallpapers/sl.jpg}"
     ];
     wallpaper = [
       "DP-2,${../components/optional/desktop/wallpapers/rags.jpg}"

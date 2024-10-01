@@ -36,7 +36,7 @@ in {
 
   services.hyprpaper.settings = {
     preload = [
-      ../components/optional/desktop/wallpapers/er2.png
+      "${../components/optional/desktop/wallpapers/er2.png}"
     ];
     wallpaper = [
       "eDP-1,${../components/optional/desktop/wallpapers/er2.png}"
