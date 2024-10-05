@@ -12,6 +12,7 @@
     ./bufferline.nix
     ./lualine.nix
     ./lsp.nix
+    ./neominimap.nix
   ];
 
   colorschemes.nord.enable = true;
