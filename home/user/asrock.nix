@@ -17,9 +17,8 @@
   ];
 
   wayland.windowManager.hyprland.settings.monitor = [
-    # Don't ask about the positioning
-    "DP-2,2560x1440@144,-1920x150,1"
-    "HDMI-A-1,1920x1080@60,0x0,1.33333"
+    "DP-1,3440x1440@160,0x0,1"
+    "DP-2,1920x1080@144,-1920x360,1"
   ];
 
   programs.waybar.settings.main.temperature.hwmon-path =
@@ -32,14 +31,14 @@
     ];
     wallpaper = [
       "DP-2,${../components/optional/desktop/wallpapers/rags.jpg}"
-      "HDMI-A-1,${../components/optional/desktop/wallpapers/sl.jpg}"
+      "DP-1,${../components/optional/desktop/wallpapers/sl.jpg}"
     ];
   };
 
   wayland.windowManager.hyprland.settings = {
     windowrulev2 = [
       "fullscreen,class:^(gamescope)$"
-      "monitor DP-2,class:^(gamescope)$"
+      "monitor DP-1,class:^(gamescope)$"
       "workspace 10,class:^(gamescope)$"
     ];
     workspace = [ "10,border:false,rounding:false" ];

@@ -27,7 +27,7 @@ in
         ;
       }
       {
-        monitor = "HDMI-A-1";
+        monitor = "DP-1";
         path = "${../wallpapers/hsr2.jpg}";
         inherit (common_settings)
           blur_passes
