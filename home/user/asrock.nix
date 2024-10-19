@@ -9,6 +9,7 @@
     ./components/core
     ./components/optional/freetube.nix
     ./components/optional/thunderbird.nix
+    ./components/optional/signal-desktop.nix
   ];
 
   home.packages = with pkgs; [
