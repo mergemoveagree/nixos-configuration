@@ -33,41 +33,8 @@
     };
   in
   {
-    nixosConfigurations = lib.mergeAttrsList [
-      {
-        thinkpadx1 = nixpkgs.lib.nixosSystem {
-          inherit
-            system
-            specialArgs
-          ;
-          modules = [
-            inputs.disko.nixosModules.disko
-            ./configuration.nix
-            ./hosts/thinkpadx1
-          ];
-        };
-        malthor = nixpkgs.lib.nixosSystem {
-          inherit
-            system
-            specialArgs
-          ;
-          modules = [
-              inputs.disko.nixosModules.disko
-              ./configuration.nix
-              ./hosts/malthor
-          ];
-        };
-        teemo = nixpkgs.lib.nixosSystem {
-          system = "aarch64";
-          inherit specialArgs;
-          modules = [
-            inputs.disko.nixosModules.disko
-            ./configuration.nix
-            ./hosts/teemo
-          ];
-        };
-      }
-      (lib.genAttrs [ "asrock" "asrock-install" ] (name: nixpkgs.lib.nixosSystem {
+    nixosConfigurations = {
+      asrock = lib.nixosSystem {
         inherit
           system
           specialArgs
@@ -75,10 +42,41 @@
         modules = [
           inputs.disko.nixosModules.disko
           ./configuration.nix
-          ./hosts/${name}
+          ./hosts/asrock
         ];
-      }))
-    ];
+      };
+      thinkpadx1 = lib.nixosSystem {
+        inherit
+          system
+          specialArgs
+        ;
+        modules = [
+          inputs.disko.nixosModules.disko
+          ./configuration.nix
+          ./hosts/thinkpadx1
+        ];
+      };
+      malthor = lib.nixosSystem {
+        inherit
+          system
+          specialArgs
+        ;
+        modules = [
+            inputs.disko.nixosModules.disko
+            ./configuration.nix
+            ./hosts/malthor
+        ];
+      };
+      teemo = lib.nixosSystem {
+        system = "aarch64";
+        inherit specialArgs;
+        modules = [
+          inputs.disko.nixosModules.disko
+          ./configuration.nix
+          ./hosts/teemo
+        ];
+      };
+    };
 
     devShells.${system}.default = pkgs.mkShell {
       NIX_CONFIG = "extra-experimental-features = nix-command flakes";
