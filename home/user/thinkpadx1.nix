@@ -23,6 +23,7 @@ in {
   imports = [
     ../components/core
     ../components/optional/desktop
+    ../components/optional/office.nix
 
     ./components/core
     ./components/optional/freetube.nix

@@ -5,6 +5,7 @@
     ../components/core
     ../components/optional/desktop
     ../components/optional/gaming
+    ../components/optional/office.nix
 
     ./components/core
     ./components/optional/freetube.nix
