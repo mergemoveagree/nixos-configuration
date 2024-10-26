@@ -37,9 +37,12 @@ in {
 
   services.easyeffects.preset = "Loudness+Autogain";
 
-  wayland.windowManager.hyprland.settings.monitor = [
-    "eDP-1,1920x1200@60,0x0,1"
-  ];
+  wayland.windowManager.hyprland.settings = {
+    monitor = [
+      "eDP-1,1920x1200@60,0x0,1"
+    ];
+    input.touchpad.clickfinger_behavior = true;
+  };
 
   programs.waybar.settings.main.temperature.hwmon-path =
     "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp4_input";
