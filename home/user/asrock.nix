@@ -11,6 +11,8 @@
     ./components/optional/freetube.nix
     ./components/optional/thunderbird.nix
     ./components/optional/signal-desktop.nix
+    ./components/optional/mpv.nix
+    ./components/optional/qbittorrent.nix
   ];
 
   home.packages = with pkgs; [
