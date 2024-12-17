@@ -28,15 +28,15 @@ in
     xwaylandvideobridge
     networkmanagerapplet
 
-    nerdfonts
     font-awesome
   ]
   ++ [
     nordzy-cursors-hyprcursor-theme
-  ];
+  ]
+  ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   # Setting default theme for Hyprcursor
-  home.file.".icons/default".source = "${nordzy-cursors-hyprcursor-theme}/share/icons/Nordzy-cursors";
+  home.file.".icons/default".source = "${nordzy-cursors-hyprcursor-theme}/share/icons/Nordzy-hyprcursors";
 
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.systemd.enable = true;
@@ -88,9 +88,6 @@ in
       rounding = 10;
       active_opacity = 1.0;
       inactive_opacity = 1.0;
-
-      drop_shadow = true;
-      shadow_range = 4; "col.shadow" = "rgba(1a1a1aee)";
 
       blur = {
         enabled = true;

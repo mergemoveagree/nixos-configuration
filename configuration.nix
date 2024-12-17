@@ -6,6 +6,7 @@
 {
   imports = [
     ./hosts/components/users/admin
+    ./pkgs/nixpkgs-issue-55674.nix
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

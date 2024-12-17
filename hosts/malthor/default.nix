@@ -32,12 +32,7 @@
   ];
 
   # NVIDIA Setup
-  # Have to redefine steam packages :(
-  # TODO: Do not duplicate packages in allowUnfreePredicate
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "steam"
-    "steam-original"
-    "steam-run"
+  allowedUnfree = [
     "discord"
     "nvidia-x11"
     "nvidia-settings"

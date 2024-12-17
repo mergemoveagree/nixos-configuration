@@ -1,10 +1,11 @@
 { lib
 , ...
 }: {
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+  allowedUnfree = [
     "steam"
     "steam-original"
     "steam-run"
+    "steam-unwrapped"
   ];
 
   programs.steam = {

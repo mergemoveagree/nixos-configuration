@@ -1,20 +1,19 @@
 { stdenvNoCC
-, fetchgit
+, fetchFromGitHub
 , lib
 }:
 stdenvNoCC.mkDerivation {
   pname = "nordzy-cursors-hyprcursor-theme";
-  version = "1.0.0";
-  src = fetchgit {
-    url = "https://github.com/guillaumeboehm/Nordzy-cursors-hyprcursor";
-    rev = "refs/tags/1.0.0";
-    sparseCheckout = [ "themes" ];
-    fetchSubmodules = true;
-    hash = "sha256-NFxR0bQqZGDeiXxayKkC+g5l7WYe7ixgd7Pzj8IB3hM=";
+  version = "2.3.0";
+  src = fetchFromGitHub {
+    owner = "guillaumeboehm";
+    repo = "Nordzy-cursors";
+    rev = "v2.3.0";
+    hash = "sha256-3HUSl0CQcay4V9pO35cmOEZvrgNOJ3WNZahs+hJjUJU=";
   };
   installPhase = ''
     mkdir -p $out/share/icons
-    for theme in themes/*
+    for theme in hyprcursors/themes/*
     do
       cp -r ''$theme $out/share/icons
     done
@@ -22,7 +21,7 @@ stdenvNoCC.mkDerivation {
 
   meta = with lib; {
     description = "Cursor theme using the Nord color palette and based on Vimix and cz-Viator";
-    homepage = "https://github.com/guillaumeboehm/Nordzy-cursors-hyprcursor";
+    homepage = "https://github.com/guillaumeboehm/Nordzy-cursors";
     license = licenses.gpl3;
     platforms = platforms.all;
   };
