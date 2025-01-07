@@ -7,6 +7,8 @@
     ./disk-config.nix
 
     ../components/core
+    ./unbound.nix
+    ./adguard.nix
 
     /*
     # TODO: Sort out home-manager configuration stuff
