@@ -20,6 +20,11 @@
 
   boot.loader.systemd-boot.enable = lib.mkForce false;
 
+  networking.firewall = {
+    allowedTCPPorts = [3003 80];
+    allowedUDPPorts = [53];
+  };
+
   nixpkgs.hostPlatform.system = "aarch64-linux";
 
   powerManagement.cpuFreqGovernor = "ondemand";

@@ -1,6 +1,8 @@
 {
   services.unbound = {
     enable = true;
+    enableRootTrustAnchor = true;
+    resolveLocalQueries = true;
     settings = {
       server = {
         interface = [ "127.0.0.1" ];
