@@ -1,6 +1,5 @@
 { config
 , inputs
-, lib
 , ...
 }:
 {
@@ -8,7 +7,7 @@
     inputs.hardware.nixosModules.common-pc-laptop
     inputs.hardware.nixosModules.common-pc-laptop-hdd
     inputs.hardware.nixosModules.common-cpu-intel
-    inputs.hardware.nixosModules.common-gpu-nvidia-sync
+    inputs.hardware.nixosModules.common-gpu-nvidia
     ./disk-config.nix
     ../components/core
     ../components/optional/hyprland
@@ -48,7 +47,8 @@
     open = false;
     nvidiaSettings = true;
     prime = {
-      sync.enable = true;
+      reverseSync.enable = true;
+      allowExternalGpu = true;
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
     };
