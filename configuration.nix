@@ -26,6 +26,7 @@
     git
     git-crypt
     wget
+    kitty
   ];
 
   environment.sessionVariables = {
