@@ -15,7 +15,6 @@
     ../components/optional/hyprland
     ../components/optional/gaming
     ../components/optional/bluetooth.nix
-    ../components/optional/nixos-rbswitch.nix
     ../components/users/user
   ];
 

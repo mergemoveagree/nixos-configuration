@@ -17,7 +17,6 @@
     ../components/optional/mullvad-vpn.nix
     ../components/optional/hyprland
     ../components/optional/bluetooth.nix
-    ../components/optional/nixos-rbswitch.nix
 
     ../components/users/user
   ];

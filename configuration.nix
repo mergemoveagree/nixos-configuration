@@ -2,8 +2,9 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
-{
+{ pkgs
+, ...
+}: {
   imports = [
     ./hosts/components/users/admin
     ./pkgs/nixpkgs-issue-55674.nix
@@ -29,6 +30,12 @@
 
   environment.sessionVariables = {
     EDITOR = "nvim";
+  };
+
+  programs.bash.shellAliases = {
+    sudo = "sudo ";
+    nixos-rbs = "sudo nixos-rebuild switch --flake /home/user/nixos-configuration --use-remote-sudo";
+    nixos-rbb = "sudo nixos-rebuild boot --flake /home/user/nixos-configuration --use-remote-sudo";
   };
 
   # List services that you want to enable:
