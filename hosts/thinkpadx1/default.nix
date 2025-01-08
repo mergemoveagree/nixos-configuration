@@ -34,6 +34,8 @@
     ];
   };
 
+  hardware.firmware = [pkgs.sof-firmware];
+
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "iHD";
   };
