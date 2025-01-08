@@ -17,5 +17,8 @@ in {
     inputs.nixvim.homeManagerModules.nixvim
   ];
 
-  home.packages = [ nvim ];
+  home.packages = [
+    nvim
+    pkgs.lean4
+  ];
 }

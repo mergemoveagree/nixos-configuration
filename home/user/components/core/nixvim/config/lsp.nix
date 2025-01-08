@@ -55,6 +55,13 @@
       };
     };
   };
+  extraPlugins = with pkgs.vimPlugins; [
+    plenary-nvim
+    lean-nvim
+  ];
+  extraConfigLuaPre = ''
+    require('lean').setup{ mappings = true }
+  '';
   extraConfigLua = let
     #lsp-ai-llama-cpp = "${inputs.lsp-ai.packages.${pkgs.system}.lsp-ai-llama-cpp}/bin/lsp-ai";
     elixir-ls = "${pkgs.elixir-ls}/bin/elixir-ls";
