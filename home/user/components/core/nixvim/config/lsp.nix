@@ -54,6 +54,7 @@
         ellipsis_char = "...";
       };
     };
+    fidget.enable = true;
   };
   extraPlugins = with pkgs.vimPlugins; [
     plenary-nvim

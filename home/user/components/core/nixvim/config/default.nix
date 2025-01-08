@@ -2,7 +2,6 @@
   imports = [
     ./neotree.nix
     ./indent-blankline.nix
-    ./fidget.nix
     ./navic.nix
     ./treesitter.nix
     ./todo-comments.nix
