@@ -1,7 +1,6 @@
 {
   pkgs,
   osConfig,
-  inputs,
   ...
 }:
 let
@@ -42,19 +41,6 @@ in
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.systemd.enable = true;
   wayland.windowManager.hyprland.xwayland.enable = true;
-  wayland.windowManager.hyprland.plugins = let
-    official-plugins = with inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}; [
-      hyprbars
-      hyprexpo
-      hyprtrails
-    ];
-    other-plugins = with pkgs.hyprlandPlugins; [
-      hyprfocus
-      hyprspace
-      hyprsplit
-
-    ];
-  in official-plugins ++ other-plugins;
 
   # TODO: Move settings to different file
   wayland.windowManager.hyprland.settings = {
