@@ -4,7 +4,10 @@
 
 { pkgs
 , ...
-}: {
+}: let
+  # TODO Make this less specific
+  nixos-config = "/home/user/nixos-configuration" ;
+in {
   imports = [
     ./hosts/components/users/admin
     ./pkgs/nixpkgs-issue-55674.nix
@@ -42,8 +45,8 @@
 
   programs.bash.shellAliases = {
     sudo = "sudo ";
-    nixos-rbs = "sudo nixos-rebuild switch --flake /home/user/nixos-configuration --use-remote-sudo";
-    nixos-rbb = "sudo nixos-rebuild boot --flake /home/user/nixos-configuration --use-remote-sudo";
+    nixos-rbs = "sudo nixos-rebuild switch --flake ${nixos-config} --use-remote-sudo";
+    nixos-rbb = "sudo nixos-rebuild boot --flake ${nixos-config} --use-remote-sudo";
   };
 
   # List services that you want to enable:

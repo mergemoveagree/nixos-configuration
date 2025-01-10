@@ -11,9 +11,8 @@ in
   imports = [
     ./hypridle.nix
     ./hyprpaper.nix
-    ./rofi.nix
     ./hyprlock-${hostName}.nix
-    ./waybar
+    ./waybar-rofi
   ];
 
   fonts.fontconfig.enable = true;

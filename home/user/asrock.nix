@@ -24,9 +24,6 @@
     "DP-2,1920x1080@144,-1920x360,1"
   ];
 
-  programs.waybar.settings.main.temperature.hwmon-path =
-    "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input";
-
   services.hyprpaper.settings = {
     preload = [
       "${../components/optional/desktop/wallpapers/rags.jpg}"

@@ -1,2 +1,1 @@
 home/user/components/core/mail.nix filter=git-crypt diff=git-crypt
-home/user/components/optional/desktop/hyprland/waybar/wttr.py filter=git-crypt diff=git-crypt

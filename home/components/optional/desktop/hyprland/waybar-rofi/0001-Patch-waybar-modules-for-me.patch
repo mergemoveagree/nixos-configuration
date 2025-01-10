@@ -1,0 +1,101 @@
+From f43b463c57fa35e029155be70616a746c45edbdf Mon Sep 17 00:00:00 2001
+From: Jaden Nola <180627245+mergemoveagree@users.noreply.github.com>
+Date: Fri, 10 Jan 2025 13:31:47 -0600
+Subject: [PATCH] Patch waybar modules for me
+
+---
+ config.jsonc | 24 ++++++++++++------------
+ style.css    | 10 +++-------
+ 2 files changed, 15 insertions(+), 19 deletions(-)
+
+diff --git a/config.jsonc b/config.jsonc
+index dae4c8a..4fb686a 100644
+--- a/config.jsonc
++++ b/config.jsonc
+@@ -45,7 +45,7 @@
+ 
+     "custom/wifi",          // wi-fi
+     "bluetooth",            // bluetooth
+-    "custom/update",        // system update
++    "keyboard-state",
+     "custom/right5"
+   ],
+ 
+@@ -225,7 +225,7 @@
+   },
+ 
+   "idle_inhibitor": {
+-    "format": " ",
++    "format": " ",
+     "tooltip": true,
+     "tooltip-format-activated": "Presentation Mode",
+     "tooltip-format-deactivated": "Idle Mode",
+@@ -305,16 +305,16 @@
+     "max-length": 1
+   },
+ 
+-  "custom/update": {
+-    "exec": "~/.config/waybar/scripts/system-update.sh",
+-    "return-type": "json",
+-    "format": "{}",
+-    "on-click": "hyprctl dispatch exec '~/.config/waybar/scripts/system-update.sh up'",
+-    "interval": 60,
+-    "tooltip": true,
+-    "signal": 20, // I'm not sure what this does
+-    "min-length": 1,
+-    "max-length": 1
++  "keyboard-state": {
++    "numlock": false,
++    "capslock": true,
++    "format": {
++      "capslock": "{icon}"
++    },
++    "format-icons": {
++      "locked": "󰬶 ",
++      "unlocked": "󰬵 "
++    }
+   },
+ 
+   "custom/media": {
+diff --git a/style.css b/style.css
+index 3999c78..504c785 100644
+--- a/style.css
++++ b/style.css
+@@ -194,8 +194,8 @@ tooltip label {
+   padding-left: 3px;
+ }
+ #idle_inhibitor {
+-  color: @distro-fg;
+   background: @distro-bg;
++  color: @distro-fg;
+   font-size: 11pt;
+   margin-right: -1px;
+   margin-bottom: -2px;
+@@ -203,6 +203,7 @@ tooltip label {
+   padding-left: 3px;
+   text-shadow: 0 0 1.5px rgba(0, 0, 0, 1);
+ }
++
+ #custom-right2 {
+   color: @distro-bg;
+   background: @main-bg;
+@@ -261,15 +262,10 @@ tooltip label {
+   box-shadow: none;
+ }
+ 
+-#custom-update {
++#keyboard-hint {
+   padding-right: 8px;
+   background: @tray;
+ }
+-#custom-update:hover {
+-  color: @hover-fg;
+-  text-shadow: none;
+-  box-shadow: none;
+-}
+ #custom-right5 {
+   color: @tray;
+   background: @main-bg;
+-- 
+2.47.0
+
