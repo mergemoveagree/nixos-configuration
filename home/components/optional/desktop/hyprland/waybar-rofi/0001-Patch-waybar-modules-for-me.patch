@@ -1,15 +1,16 @@
-From a498abdfb19cb0e3d72609f847d1a24e40668060 Mon Sep 17 00:00:00 2001
+From fa504a9185b574f018e7f08fda773ee4bc4a69f2 Mon Sep 17 00:00:00 2001
 From: Jaden Nola <180627245+mergemoveagree@users.noreply.github.com>
-Date: Fri, 10 Jan 2025 20:07:03 -0600
+Date: Sat, 11 Jan 2025 14:08:47 -0600
 Subject: [PATCH] Patch waybar modules for me
 
 ---
- config.jsonc | 25 ++++++++++++-------------
- style.css    | 10 +++-------
- 2 files changed, 15 insertions(+), 20 deletions(-)
+ config.jsonc                  | 29 ++++++++++++++---------------
+ scripts/brightness-control.sh | 10 +---------
+ style.css                     | 13 +++++--------
+ 3 files changed, 20 insertions(+), 32 deletions(-)
 
 diff --git a/config.jsonc b/config.jsonc
-index dae4c8a..bdff835 100644
+index dae4c8a..616f9ae 100644
 --- a/config.jsonc
 +++ b/config.jsonc
 @@ -45,7 +45,7 @@
@@ -62,10 +63,65 @@ index dae4c8a..bdff835 100644
    },
  
    "custom/media": {
+@@ -351,8 +350,8 @@
+     "return-type": "json",
+     "format": "{}",
+     "tooltip": true,
+-    "on-scroll-up": "~/.config/waybar/scripts/brightness-control.sh -o i",
+-    "on-scroll-down": "~/.config/waybar/scripts/brightness-control.sh -o d",
++    "on-scroll-down": "~/.config/waybar/scripts/brightness-control.sh -o i",
++    "on-scroll-up": "~/.config/waybar/scripts/brightness-control.sh -o d",
+     "interval": 1,
+     "min-length": 6,
+     "max-length": 6
+diff --git a/scripts/brightness-control.sh b/scripts/brightness-control.sh
+index 1a8b6fe..498ff4d 100755
+--- a/scripts/brightness-control.sh
++++ b/scripts/brightness-control.sh
+@@ -10,12 +10,6 @@ Valid actions are:
+ EOF
+ }
+ 
+-# Send a notification with brightness info
+-send_notification() {
+-  brightness=$(brightnessctl info | grep -oP "(?<=\()\d+(?=%)")
+-  notify-send -r 91190 "Brightness: ${brightness}%"
+-}
+-
+ # Get the current brightness percentage and device name
+ get_brightness() {
+   brightness=$(brightnessctl -m | grep -o '[0-9]\+%' | head -c-2)
+@@ -36,7 +30,6 @@ while getopts o: opt; do
+       else
+         brightnessctl set +2%
+       fi
+-      send_notification
+       ;;
+     d) # Decrease brightness
+       if [[ $brightness -le 1 ]]; then
+@@ -46,8 +39,7 @@ while getopts o: opt; do
+       else
+         brightnessctl set 2%-
+       fi
+-      send_notification
+-      ;;
++     ;;
+     *)
+       print_error
+       ;;
 diff --git a/style.css b/style.css
-index 3999c78..504c785 100644
+index 3999c78..973b8b8 100644
 --- a/style.css
 +++ b/style.css
+@@ -75,7 +75,7 @@ tooltip label {
+ #clock,
+ #custom-wifi,
+ #bluetooth,
+-#custom-update,
++#keyboard-hint,
+ #custom-media,
+ #pulseaudio,
+ #custom-backlight,
 @@ -194,8 +194,8 @@ tooltip label {
    padding-left: 3px;
  }
@@ -84,12 +140,13 @@ index 3999c78..504c785 100644
  #custom-right2 {
    color: @distro-bg;
    background: @main-bg;
-@@ -261,15 +262,10 @@ tooltip label {
+@@ -261,15 +262,11 @@ tooltip label {
    box-shadow: none;
  }
  
 -#custom-update {
 +#keyboard-hint {
++  padding-left: 5px;
    padding-right: 8px;
    background: @tray;
  }
