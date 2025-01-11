@@ -1,15 +1,15 @@
-From f43b463c57fa35e029155be70616a746c45edbdf Mon Sep 17 00:00:00 2001
+From a498abdfb19cb0e3d72609f847d1a24e40668060 Mon Sep 17 00:00:00 2001
 From: Jaden Nola <180627245+mergemoveagree@users.noreply.github.com>
-Date: Fri, 10 Jan 2025 13:31:47 -0600
+Date: Fri, 10 Jan 2025 20:07:03 -0600
 Subject: [PATCH] Patch waybar modules for me
 
 ---
- config.jsonc | 24 ++++++++++++------------
+ config.jsonc | 25 ++++++++++++-------------
  style.css    | 10 +++-------
- 2 files changed, 15 insertions(+), 19 deletions(-)
+ 2 files changed, 15 insertions(+), 20 deletions(-)
 
 diff --git a/config.jsonc b/config.jsonc
-index dae4c8a..4fb686a 100644
+index dae4c8a..bdff835 100644
 --- a/config.jsonc
 +++ b/config.jsonc
 @@ -45,7 +45,7 @@
@@ -21,7 +21,7 @@ index dae4c8a..4fb686a 100644
      "custom/right5"
    ],
  
-@@ -225,7 +225,7 @@
+@@ -225,12 +225,11 @@
    },
  
    "idle_inhibitor": {
@@ -30,7 +30,12 @@ index dae4c8a..4fb686a 100644
      "tooltip": true,
      "tooltip-format-activated": "Presentation Mode",
      "tooltip-format-deactivated": "Idle Mode",
-@@ -305,16 +305,16 @@
+     "start-activated": false,
+-    "timeout": 5
+   },
+ 
+   "clock#time": {
+@@ -305,16 +304,16 @@
      "max-length": 1
    },
  
