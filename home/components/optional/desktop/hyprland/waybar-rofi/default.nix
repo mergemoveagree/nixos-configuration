@@ -18,6 +18,7 @@ in {
     nerd-fonts.jetbrains-mono
     lm_sensors
     (python3.withPackages (ps: [ ps.pygobject3 ]))
+    libnotify
   ];
 
   # NOTE: I'm lazy
