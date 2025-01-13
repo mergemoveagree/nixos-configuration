@@ -17,6 +17,7 @@
 
   home.packages = with pkgs; [
     vesktop
+    fractal
   ];
 
   wayland.windowManager.hyprland.settings.monitor = [

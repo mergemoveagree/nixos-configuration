@@ -14,6 +14,7 @@
 
   home.packages = with pkgs; [
     vesktop
+    fractal
   ];
 
   services.easyeffects.preset = "Loudness+Autogain";
